@@ -1,0 +1,25 @@
+{
+  "name": "project-management-platform",
+  "version": "1.0.0",
+  "description": "project-management-platform like basecamp or moday",
+  "keywords": [
+    "express",
+    "backend"
+  ],
+  "homepage": "https://github.com/hammad-scripted/Project-Management-Platform#readme",
+  "bugs": {
+    "url": "https://github.com/hammad-scripted/Project-Management-Platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hammad-scripted/Project-Management-Platform.git"
+  },
+  "license": "ISC",
+  "author": "Hammad",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  }
+}
