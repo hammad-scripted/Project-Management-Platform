@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import healthCheckRouter from "./routes/health.routes.js";
 const app = express();
 
 //** MIDDLEWARES */
@@ -19,6 +20,7 @@ app.use(
 
 //** ROUTES */
 
+app.use("/api/v1/healthcheck", healthCheckRouter);
 app.get("/", (req, res) => {
   res.send("hello");
 });
