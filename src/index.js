@@ -1,10 +1,9 @@
 import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
+import app from "./app.js";
+import chalk from "chalk";
+const PORT = process.env.PORT || 3000;
 
-dotenv.config({
-  path: "./.env",
+app.listen(PORT, () => {
+  console.log(chalk.magenta(`Server is listening on ${PORT}...`));
 });
-
-const myUsername = process.env.NAME;
-const email = process.env.EMAIL;
-console.log(myUsername);
-console.log(email);
