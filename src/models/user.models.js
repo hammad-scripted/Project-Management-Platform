@@ -63,7 +63,7 @@ const userSchema = new Schema(
 );
 
 const User = mongoose.model('User', userSchema);
-
+// ** Pre-save hook to hash the password before saving the user document
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
