@@ -1,5 +1,5 @@
-import ApiResponse from "../utils/api-response.js";
-import asyncHandler from "../utils/async-handler.js";
+import ApiResponse from '../utils/api-response.js';
+import asyncHandler from '../utils/async-handler.js';
 /**
  * `
  * @param {object} req - The request object.
@@ -24,7 +24,7 @@ const healthCheck = async (req, res, next) => {
 const healthCheck = asyncHandler(async (req, res, next) => {
   return res.status(200).json(
     new ApiResponse(200, {
-      message: "Server is healthy and up and running",
+      message: 'Server is healthy & up and running',
     }),
   );
 });
