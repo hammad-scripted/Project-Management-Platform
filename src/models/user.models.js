@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
-
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 const userSchema = new Schema(
   {
     avatar: {
@@ -75,5 +76,17 @@ userSchema.pre('save', async function (next) {
 });
 userSchema.methods.isPasswordMatch = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
+};
+
+userSchema.methods.generateAccessToken = function () {
+  return jwt.sign({ id: this._id }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN,
+  });
+};
+
+userSchema.methods.generateRefreshToken = function () {
+  return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN,
+  });
 };
 export default User;
