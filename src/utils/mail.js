@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 });
 
 //* Send Email Function
-const sendEmail = async (options) => {
+export const sendEmail = async (options) => {
   try {
     //* Generate HTML email
     const emailHtml = mailGenerator.generate(options.mailgenContent);
