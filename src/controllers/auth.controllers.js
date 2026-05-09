@@ -2,8 +2,9 @@ import User from '../models/user.models.js';
 import ApiError from './../utils/api-error.js';
 import ApiResponse from './../utils/api-response.js';
 import asyncHandler from './../utils/async-handler.js';
-import sendEmail from '../utils/mail.js';
+import { sendEmail } from '../utils/mail.js';
 import { emailVerificationTemplate } from '../utils/mail.js';
+
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -43,7 +44,9 @@ export const registerUser = asyncHandler(async (req, res, next) => {
       subject: 'Email Verification',
       mailgenContent: emailVerificationTemplate({
         username: user.username,
-        verificationUrl: `{req.protocol}://${req.get('host')}/api/v1/users/verify-email/${unhashedToken}`,
+        verificationUrl: `${req.protocol}://${req.get(
+          'host',
+        )}/api/v1/users/verify-email/${unhashedToken}`,
       }),
     });
     const createdUser = await User.findById(user._id).select(

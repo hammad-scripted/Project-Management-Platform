@@ -85,4 +85,4 @@ const passwordResetTemplate = (username, resetUrl) => {
   };
 };
 
-export { emailVerificationTemplate, passwordResetTemplate, sendEmail };
+export { emailVerificationTemplate, passwordResetTemplate };
