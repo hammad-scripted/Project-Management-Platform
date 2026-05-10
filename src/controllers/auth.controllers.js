@@ -49,6 +49,7 @@ export const registerUser = asyncHandler(async (req, res, next) => {
         )}/api/v1/users/verify-email/${unhashedToken}`,
       }),
     });
+    console.log(user);
     const createdUser = await User.findById(user._id).select(
       '-password -refreshToken -emailVerificationToken -emailVerificationTokenExpiry',
     );

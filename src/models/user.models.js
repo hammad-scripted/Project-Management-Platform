@@ -77,13 +77,11 @@ const userSchema = new Schema(
 // ** Pre-save hook
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
-    return next();
+    return;
   }
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-
-  next();
 });
 
 // ** Compare Password
@@ -114,7 +112,7 @@ userSchema.methods.generateTemporaryToken = function () {
     .update(unhashedToken)
     .digest('hex');
 
-  const tokenExpiry = Date.now() + 10 * 60 * 1000;
+  const tokenExpiry = Date.now() + 20 * 60 * 1000;
 
   return {
     unhashedToken,
