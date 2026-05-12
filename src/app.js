@@ -3,6 +3,7 @@ import cors from 'cors';
 import healthCheckRouter from './routes/health.route.js';
 import errorHandler from './middlewares/error.middleware.js';
 import authRouter from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
 const app = express();
 
 //** MIDDLEWARES */
@@ -19,7 +20,7 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   }),
 );
-
+app.use(cookieParser());
 //** ROUTES */
 
 app.use('/api/v1/healthcheck', healthCheckRouter);

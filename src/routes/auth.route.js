@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { registerUser } from '../controllers/auth.controllers.js';
+import { login, registerUser } from '../controllers/auth.controllers.js';
 import { userRegisterValidator } from '../validators/index.js';
 import { validateRequest } from '../middlewares/validator.middleware.js';
 
@@ -11,4 +11,5 @@ router.post(
   validateRequest,
   registerUser,
 );
+router.post('/login', login);
 export default router;
